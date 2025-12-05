@@ -1,4 +1,4 @@
-# Changing the Locks: Automating Secrets Management and Key Rotation in AWS
+# 🔐Changing the Locks: Automating Secrets Management and Key Rotation in AWS
 
 This project demonstrates a production-grade architecture for **securely managing and rotating database credentials** using:
 
@@ -54,7 +54,7 @@ Stores two secrets:
 
 Both are automatically rotated every **30 days**.
 
----
+--
 
 ### AWS Lambda – Rotation Function
 
@@ -77,7 +77,7 @@ Lambda responsibilities:
 - Rotate **app user** credentials using `ALTER USER`
 (requires first retrieving the admin secret)
 
----
+--
 
 ### Amazon RDS MySQL
 
@@ -87,7 +87,7 @@ Lambda responsibilities:
 
 - Only EC2 and Lambda can connect on port **3306**
 
----
+--
 
 ### EC2 Test Instance
 
@@ -97,7 +97,7 @@ Lambda responsibilities:
 
 - Contains a Python test script for validation
 
----
+--
 
 ### VPC Endpoint – Secrets Manager
 
@@ -127,7 +127,7 @@ aws lambda publish-layer-version \
 ```
 Copy the output **Layer ARN** and paste into the CloudFormation template.
 
----
+--
 
 ### 2️⃣ Deploy the CloudFormation Stack
 
@@ -149,7 +149,7 @@ This creates:
 
 - IAM policies
 
----
+--
 
 ### 3️⃣ Create the App User in MySQL
 
@@ -162,7 +162,7 @@ FLUSH PRIVILEGES;
 
 Lambda will rotate this password automatically.
 
----
+--
 
 ### 4️⃣ Test the System (from EC2)
 
@@ -189,7 +189,8 @@ Expected result:
 | EC2 Instance Role | Read **only AppUserSecret** |
 | Admin Secret | Never exposed to EC2 |
 | AppUserSecret | Least-privilege access for application |
----
+
+--
 
 ### Security Groups
 
