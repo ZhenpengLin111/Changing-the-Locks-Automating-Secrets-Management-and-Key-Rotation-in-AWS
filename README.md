@@ -183,12 +183,12 @@ Expected result:
 
 ## 🔐 Security Model
 ### IAM Roles
-Role	Access
-Lambda Rotation Role	Read + rotate both secrets
-EC2 Instance Role	Read only AppUserSecret
-Admin Secret	Never exposed to EC2
-AppUserSecret	Least-privilege access for application
-
+| **Role** | **Access** |
+|:--------:|:----------:|
+| Lambda Rotation Role | Read + rotate **both** secrets |
+| EC2 Instance Role | Read **only AppUserSecret** |
+| Admin Secret | Never exposed to EC2 |
+| AppUserSecret | Least-privilege access for application |
 ---
 
 ### Security Groups
